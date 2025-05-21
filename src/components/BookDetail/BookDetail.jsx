@@ -1,5 +1,6 @@
 import React from "react";
 import { useLoaderData, useParams } from "react-router-dom";
+import { addToStoredReadList } from "../../Utility/addToDB";
 
 const BookDetail = () => {
   const { bookId } = useParams();
@@ -19,6 +20,19 @@ const BookDetail = () => {
     publisher,
     yearOfPublishing,
   } = book;
+
+  const handleMarkAsRead = (id) => {
+    /**
+     * 1. understand what to store or save: => bookId
+     * 2. where to store: database
+     * 3. array,list,collection:
+     * 4. check: if the book is alredy in the readList.
+     * 5. If not, then add the book to the list
+     * 6. if yes, do not add the book
+     */
+    addToStoredReadList(id);
+  };
+
   return (
     <div className="flex flex-col md:flex-row justify-evenly my-24">
       <div className=" p-4">
@@ -38,7 +52,7 @@ const BookDetail = () => {
           {review}
         </p>
         <p className="my-6">
-          <span className="mr-6 font-bold">Tags </span>
+          <span className="mr-6 font-bold">Tag </span>
           {tags.map((tag, idx) => (
             <button
               key={idx}
@@ -64,8 +78,11 @@ const BookDetail = () => {
           </div>
         </div>
         <div class="flex gap-4 mt-16">
-          <button class="bg-white text-black border border-gray-300 px-6 py-2 rounded-xl shadow-md hover:bg-gray-100 hover:scale-105 transform transition-all duration-300 ease-in-out">
-            Read
+          <button
+            onClick={() => handleMarkAsRead(bookId)}
+            class="bg-white text-black border border-gray-300 px-6 py-2 rounded-xl shadow-md hover:bg-gray-100 hover:scale-105 transform transition-all duration-300 ease-in-out"
+          >
+            Mark as Read
           </button>
 
           <button class="bg-blue-100 text-blue-800 px-6 py-2 rounded-xl shadow-md hover:bg-blue-200 hover:scale-105 transform transition-all duration-300 ease-in-out">

@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -37,7 +37,11 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <a className="btn btn-ghost font-bold work-sans text-3xl">Book vibe</a>
+        <Link to={"/"}>
+          <a className="btn btn-ghost text-green-600 font-bold work-sans text-xl md:text-3xl">
+            Book vibe
+          </a>
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -53,12 +57,18 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <button className="bg-green-600 text-white font-semibold px-8 py-3 rounded-2xl shadow-md hover:bg-green-700 hover:shadow-lg transition-all duration-300 ease-in-out mr-4">
-          Sign In
-        </button>
-        <button className="bg-blue-600 text-white font-semibold px-8 py-3 rounded-2xl shadow-md hover:bg-blue-700 hover:shadow-lg transition-all duration-300 ease-in-out">
-          Sign Up
-        </button>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 ">
+          <div className="flex flex-wrap items-center justify-center gap-4 ">
+            <div className="flex items-center gap-2">
+              <button className="bg-green-600 text-white font-semibold text-xs sm:text-sm px-4 py-2 rounded-lg hover:bg-green-700 transition">
+                Sign In
+              </button>
+              <button className="bg-blue-600 text-white font-semibold text-xs sm:text-sm px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+                Sign Up
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
