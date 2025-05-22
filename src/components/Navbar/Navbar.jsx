@@ -30,7 +30,7 @@ const Navbar = () => {
               <NavLink to={"/"}>Home</NavLink>
             </li>
             <li>
-              <NavLink to={""}>Listed Books</NavLink>
+              <NavLink to={"/listedBooks"}>Listed Books</NavLink>
             </li>
             <li>
               <NavLink to={""}>pages to Read</NavLink>
@@ -38,9 +38,9 @@ const Navbar = () => {
           </ul>
         </div>
         <Link to={"/"}>
-          <a className="btn btn-ghost text-green-600 font-bold work-sans text-xl md:text-3xl">
+          <button className="text-green-600 text-xl md:text-3xl font-bold work-sans px-5 py-2 rounded-xl  hover:bg-green-600 hover:text-white transition-all duration-300 shadow-sm hover:shadow-md">
             Book vibe
-          </a>
+          </button>
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -49,7 +49,7 @@ const Navbar = () => {
             <NavLink to={"/"}>Home</NavLink>
           </li>
           <li>
-            <NavLink to={""}>Listed Books</NavLink>
+            <NavLink to={"/listedBooks"}>Listed Books</NavLink>
           </li>
           <li>
             <NavLink to={""}>pages to Read</NavLink>

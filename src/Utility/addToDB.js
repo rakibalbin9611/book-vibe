@@ -13,7 +13,7 @@ const addToStoredReadList = (id) => {
   const storedList = getStoredReadList();
   if (storedList.includes(id)) {
     //already exist.do not add it.
-    console.log(id, "Already exist in the read list");
+    alert("Alread in read list");
   } else {
     storedList.push(id);
     const storedListStr = JSON.stringify(storedList);
@@ -21,4 +21,4 @@ const addToStoredReadList = (id) => {
   }
 };
 
-export { addToStoredReadList };
+export { addToStoredReadList, getStoredReadList };

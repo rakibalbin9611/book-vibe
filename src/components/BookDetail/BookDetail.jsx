@@ -22,70 +22,74 @@ const BookDetail = () => {
   } = book;
 
   const handleMarkAsRead = (id) => {
-    /**
-     * 1. understand what to store or save: => bookId
-     * 2. where to store: database
-     * 3. array,list,collection:
-     * 4. check: if the book is alredy in the readList.
-     * 5. If not, then add the book to the list
-     * 6. if yes, do not add the book
-     */
     addToStoredReadList(id);
   };
 
   return (
-    <div className="flex flex-col md:flex-row justify-evenly my-24">
-      <div className=" p-4">
+    <div className="flex flex-col lg:flex-row items-center lg:items-start gap-10 px-4 md:px-10 lg:px-20 py-12">
+      {/* Image Section */}
+      <div className="w-full max-w-[220px] sm:max-w-[280px] md:max-w-[320px] lg:max-w-[260px] xl:max-w-[300px] md:mt-24">
         <img
           src={image}
-          className="h-[450px] shadow-xl rounded md:mt-12 transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:brightness-105 cursor-pointer"
+          alt={bookName}
+          className="w-full h-auto rounded-xl shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
         />
       </div>
-      <div className="">
-        <h1 className="text-5xl playfairfont-bold">{bookName}</h1>
-        <h3 className="text-xl font-medium work-sans mt-4">By: {author}</h3>
-        <div className="divider"></div>
-        <p className="text-xl font-medium">{category}</p>
-        <div className="divider"></div>
-        <p className="w-[549px]  work-sans">
-          <span className="font-bold">Review:</span>
-          {review}
+
+      {/* Details Section */}
+      <div className="flex flex-col text-center lg:text-left w-full max-w-3xl">
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold playfairfont text-gray-800">
+          {bookName}
+        </h1>
+        <p className="text-lg md:text-xl mt-2 text-gray-600 font-medium">
+          By: {author}
         </p>
-        <p className="my-6">
-          <span className="mr-6 font-bold">Tag </span>
+
+        <div className="my-4 text-base md:text-lg text-green-600 font-semibold">
+          {category}
+        </div>
+
+        <p className="text-sm text-left md:text-base text-gray-700 work-sans leading-relaxed mt-4 p-4">
+          <span className="font-bold">Review:</span> {review}
+        </p>
+
+        {/* Tags */}
+        <div className="flex flex-wrap justify-center lg:justify-start gap-2 my-4">
           {tags.map((tag, idx) => (
-            <button
+            <span
               key={idx}
-              className="rounded-md work-sans  text-base font-medium px-4 py-2  text-green-500"
+              className="px-3 py-1 bg-green-100 text-green-700 text-sm rounded-full"
             >
               #{tag}
-            </button>
+            </span>
           ))}
-        </p>
-        <div className="divider"></div>
-        <div className="flex w-full ">
-          <div className="card  grid h-20 flex-grow place-items-start space-y-3">
-            <p>Number of Pages:</p>
-            <p>Publisher:</p>
-            <p>Year of Publishing:</p>
-            <p>Rating:</p>
-          </div>
-          <div className="card  grid h-20 flex-grow place-items-start space-y-3">
-            <p>{totalPages}</p>
-            <p>{publisher}</p>
-            <p>{yearOfPublishing}</p>
-            <p>{rating}</p>
-          </div>
         </div>
-        <div class="flex gap-4 mt-16">
+
+        {/* Info Grid */}
+        <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm md:text-base text-gray-700 my-4">
+          <p>📄 Number of Pages:</p>
+          <p className="font-semibold">{totalPages}</p>
+
+          <p>🏢 Publisher:</p>
+          <p className="font-semibold">{publisher}</p>
+
+          <p>📅 Year of Publishing:</p>
+          <p className="font-semibold">{yearOfPublishing}</p>
+
+          <p>⭐ Rating:</p>
+          <p className="font-semibold">{rating}</p>
+        </div>
+
+        {/* Buttons */}
+        <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 mt-6">
           <button
             onClick={() => handleMarkAsRead(bookId)}
-            class="bg-white text-black border border-gray-300 px-6 py-2 rounded-xl shadow-md hover:bg-gray-100 hover:scale-105 transform transition-all duration-300 ease-in-out"
+            className="bg-white text-black border border-gray-300 px-6 py-2 rounded-xl shadow hover:bg-gray-100 hover:scale-105 transition-all duration-300"
           >
             Mark as Read
           </button>
 
-          <button class="bg-blue-100 text-blue-800 px-6 py-2 rounded-xl shadow-md hover:bg-blue-200 hover:scale-105 transform transition-all duration-300 ease-in-out">
+          <button className="bg-blue-100 text-blue-800 px-6 py-2 rounded-xl shadow hover:bg-blue-200 hover:scale-105 transition-all duration-300">
             Wishlist
           </button>
         </div>
