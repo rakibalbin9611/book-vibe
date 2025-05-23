@@ -1,6 +1,9 @@
 import React from "react";
 import { useLoaderData, useParams } from "react-router-dom";
-import { addToStoredReadList } from "../../Utility/addToDB";
+import {
+  addToStoredReadList,
+  addToStoredWishList,
+} from "../../Utility/addToDB";
 
 const BookDetail = () => {
   const { bookId } = useParams();
@@ -25,6 +28,10 @@ const BookDetail = () => {
     addToStoredReadList(id);
   };
 
+  const handleWishList = (id) => {
+    addToStoredWishList(id);
+  };
+
   return (
     <div className="flex flex-col lg:flex-row items-center lg:items-start gap-10 px-4 md:px-10 lg:px-20 py-12">
       {/* Image Section */}
@@ -38,18 +45,16 @@ const BookDetail = () => {
 
       {/* Details Section */}
       <div className="flex flex-col text-center lg:text-left w-full max-w-3xl">
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold playfairfont text-gray-800">
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold playfairfont ">
           {bookName}
         </h1>
-        <p className="text-lg md:text-xl mt-2 text-gray-600 font-medium">
-          By: {author}
-        </p>
+        <p className="text-lg md:text-xl mt-2  font-medium">By: {author}</p>
 
         <div className="my-4 text-base md:text-lg text-green-600 font-semibold">
           {category}
         </div>
 
-        <p className="text-sm text-left md:text-base text-gray-700 work-sans leading-relaxed mt-4 p-4">
+        <p className="text-sm text-left md:text-base  work-sans leading-relaxed mt-4 p-4">
           <span className="font-bold">Review:</span> {review}
         </p>
 
@@ -66,7 +71,7 @@ const BookDetail = () => {
         </div>
 
         {/* Info Grid */}
-        <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm md:text-base text-gray-700 my-4">
+        <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm md:text-base  my-4">
           <p>📄 Number of Pages:</p>
           <p className="font-semibold">{totalPages}</p>
 
@@ -89,7 +94,10 @@ const BookDetail = () => {
             Mark as Read
           </button>
 
-          <button className="bg-blue-100 text-blue-800 px-6 py-2 rounded-xl shadow hover:bg-blue-200 hover:scale-105 transition-all duration-300">
+          <button
+            onClick={() => handleWishList(bookId)}
+            className="bg-blue-100 text-blue-800 px-6 py-2 rounded-xl shadow hover:bg-blue-200 hover:scale-105 transition-all duration-300"
+          >
             Wishlist
           </button>
         </div>

@@ -7,7 +7,8 @@ import ErrorPage from "./components/ErrorPage/ErrorPage.jsx";
 import Home from "./components/Home/Home.jsx";
 import BookDetail from "./components/BookDetail/BookDetail.jsx";
 import ListedBooks from "./Utility/ListedBooks/ListedBooks.jsx";
-import ShowListedBooks from "./Utility/ListedBooks/ShowListedBooks/ShowListedBooks.jsx";
+import { Bounce, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const router = createBrowserRouter([
   {
@@ -36,5 +37,18 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <RouterProvider router={router} />
+    <ToastContainer
+      position="top-right"
+      autoClose={5000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick={false}
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="light"
+      transition={Bounce}
+    />
   </StrictMode>
 );

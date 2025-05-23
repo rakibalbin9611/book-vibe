@@ -1,14 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const ShowListedBooks = ({ book }) => {
+const ShowWIshListedBooks = ({ book }) => {
   const navigate = useNavigate();
-  //   console.log(book);
   const {
-    bookId,
     bookName,
     author,
     image,
+    bookId,
     totalPages,
     rating,
     category,
@@ -17,7 +16,7 @@ const ShowListedBooks = ({ book }) => {
     yearOfPublishing,
   } = book;
 
-  const handleViewDetail = () => {
+  const handleShowDetail = (id) => {
     navigate(`/books/${bookId}`);
   };
   return (
@@ -65,18 +64,18 @@ const ShowListedBooks = ({ book }) => {
             Rating: {rating}
           </span>
           <button
-            onClick={handleViewDetail}
+            onClick={handleShowDetail}
             className="
-    bg-gradient-to-r from-green-500 to-green-600
-    text-white
-    border border-green-600
-    px-6 py-2 rounded-xl
-    shadow-md
-    hover:from-green-600 hover:to-green-700
-    hover:scale-105
-    transition-all duration-300 ease-in-out
-    focus:outline-none focus:ring-4 focus:ring-green-300/50
-  "
+                    bg-gradient-to-r from-green-500 to-green-600
+                    text-white
+                    border border-green-600
+                    px-6 py-2 rounded-xl
+                    shadow-md
+                    hover:from-green-600 hover:to-green-700
+                    hover:scale-105
+                    transition-all duration-300 ease-in-out
+                    focus:outline-none focus:ring-4 focus:ring-green-300/50
+                "
           >
             View Details
           </button>
@@ -86,4 +85,4 @@ const ShowListedBooks = ({ book }) => {
   );
 };
 
-export default ShowListedBooks;
+export default ShowWIshListedBooks;
